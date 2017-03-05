@@ -50,4 +50,4 @@ end
   gem 'sprockets', '2.11.0'
   gem 'mechanize'
   gem 'devise'
-
+  gem 'paperclip'

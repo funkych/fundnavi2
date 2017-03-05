@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'products#index'
-  #get 'products'   => 'products#index'
+  resources :users, only: :show
   resources :products, only: :show do
     resources :reviews, only: [:new, :create]
     collection do
       get 'search'
     end
   end
+
+  root 'products#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

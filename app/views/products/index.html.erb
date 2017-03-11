@@ -3,6 +3,34 @@
     <img src="img/loader.gif" alt="Preloader image">
   </div>
   
+  <header id="intro">
+    <div class="container">
+      <div class="table">
+        <div class="header-text">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h3 class="light white">Take care of your body.</h3>
+              <h1 class="white typed">It's the only place you have to live.</h1>
+              <span class="typed-cursor">|</span>
+
+              <div class="container">
+              <%= form_tag('/products/search', method: :get) do %>
+                <input class="search__query" name="keyword" placeholder="作品名で検索" type="text" value=""><button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button></input>
+              <% end %>
+              <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
+              </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
   <section id="services" class="section section-padded">
     <div class="container">
       <div class="row text-center title">

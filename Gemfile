@@ -51,3 +51,6 @@ end
   gem 'mechanize'
   gem 'devise'
   gem 'paperclip'
+  gem 'capybara'
+  gem 'poltergeist'
+

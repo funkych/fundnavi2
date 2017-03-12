@@ -4,6 +4,7 @@ class Scraping
     # ここに処理を書く
     links = [] # 個別ページのリンクを保存する配列
     agent = Mechanize.new
+
     current_page = agent.get("http://kakaku.com/fund/result.asp")
     elements = current_page.search('.cellName a')
     elements.each do |ele|
@@ -11,7 +12,7 @@ class Scraping
     end
 
     links.each do |link|
-      puts scraping_image('http://kakaku.com/fund/' + link)
+      puts get_product('http://kakaku.com/fund/' + link)
     end
 
   end
@@ -20,14 +21,21 @@ class Scraping
     # ここに処理を書く
     agent = Mechanize.new
     page = agent.get(link)
- 
-    name = page.at('.inner h2').inner_text
-    company = page.at('.comInfo dd').inner_text
-    character = page.at('.tokuchoBtm li').inner_text
-    category = page.at('.spec1 td').inner_text
-    investarea =page.at('.spec3 td').inner_text
 
-    product = Product.new(name: name, company: company, character: character, category: category, investarea: investarea)
+    name = page.at('.inner h2').inner_text if page.at('.inner h2')
+
+    company = page.at('.comInfo dd').inner_text if page.at('.comInfo dd')
+    character = page.at('.tokuchoBtm li').inner_text if page.at('.tokuchoBtm li')
+    category = page.at('.spec1 td').inner_text if page.at('.spec1 td')
+    investarea =page.at('.spec3 td').inner_text if page.at('.spec3 td')
+
+    investarea= investarea.gsub(/[\r\n]/,"")
+
+    product = Product.where(name: name).first_or_initialize
+    product.company = company
+    product.character = character
+    product.category = category
+    product.investarea = investarea
     product.save
   end
 end

@@ -3,7 +3,7 @@ class ProductsController < RankingController
 
   def index
     # productsテーブルから最新順に作品を２０件取得する
-    @products = Product.order('id DESC').limit(20)
+    @products = Product.order('id DESC').limit(10)
     @reviews= Review.order('id DESC').limit(10)
   end
 

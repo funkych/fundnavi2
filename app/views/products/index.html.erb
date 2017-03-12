@@ -67,25 +67,28 @@
         </div>
 
         <div class="col-md-4">
-          <h3>新着</h3>
+          <h3>新着口コミ</h3>
             <% @reviews.each do |review| %>
               <li>
                 <a href="/products/<%= review.product.id %>">
                 <div>
-                  <h3 class="text-xsmall text-overflow" name="<%= review.product.name %> ">
+                  <h3 class="text-small text-overflow" name="<%= review.product.name %> ">
                    <%= review.product.name %>
                   </h3>
                   <p class="text-small">
                     <% if review.product.reviews.present? %>
                     <span class="rating-star">
-                      <i class="star-actived rate-<%= review.product.review_average %>0"></i>
+                      <i class="star-actived rate-<%= review.rate %>0">
                     </span>
                     <% else %>
                     <span class="rating-star">
                       <i class="star-actived rate-0"></i>
                     </span>
                     <% end %>
-                    <p>
+                    <p class="text-small text-overflow" title="<%= review.user.nickname %>">
+                      <%= review.user.nickname %>
+                    </p>
+                    <p class="text-xsmall">
                       <%= review.review %>
                     </p>
                   </p>

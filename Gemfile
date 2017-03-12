@@ -53,4 +53,5 @@ end
   gem 'paperclip'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'nokogiri'
 

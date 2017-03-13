@@ -16,7 +16,7 @@ class Scraping
     end
 
   end
-
+#編集中
   def self.get_product(link)
     # ここに処理を書く
     agent = Mechanize.new
